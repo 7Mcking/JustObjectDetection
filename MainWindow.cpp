@@ -157,7 +157,7 @@ void MainWindow::populateSavedList() {
         auto *item = new QStandardItem();
         savedListModel->appendRow(item);
         auto index =  savedListModel->indexFromItem(item);
-        savedListModel->setData(index, QPixmap(photo.absoluteFilePath()), Qt::DecorationRole);
+        savedListModel->setData(index, QPixmap(photo.absoluteFilePath()).scaledToHeight(100), Qt::DecorationRole);
         savedListModel->setData(index, name, Qt::DisplayRole);
     }
 

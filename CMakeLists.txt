@@ -17,6 +17,7 @@ find_package(Qt5 COMPONENTS
 find_package(OpenCV REQUIRED)
 message(STATUS "OpenCV is at location: ${OpenCV_DIR}")
 
+
 add_executable(JustObjectDetection main.cpp
         MainWindow.h
         MainWindow.cpp
@@ -31,4 +32,7 @@ target_link_libraries(JustObjectDetection
         Qt5::Multimedia
         ${OpenCV_LIBS}
 )
+
+
+target_compile_definitions(JustObjectDetection PRIVATE OPENCV_DATA_DIR="/usr/local/share/opencv4/")
 
