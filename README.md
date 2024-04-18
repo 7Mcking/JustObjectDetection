@@ -14,4 +14,4 @@ At the end run the executable
 
 
 ## Gui Looks like
-[Image alt text] (https://github.com/7Mcking/JustObjectDetection/blob/main/Resources/JustObjectDetection.png "Demo")
+[Image alt text](https://github.com/7Mcking/JustObjectDetection/blob/main/Resources/JustObjectDetection.png "Demo")
