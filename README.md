@@ -2,7 +2,7 @@
 Object detection Gui using cascade classifier and DNN
 
 ## Running the project
-```git clone ```
+```git clone https://github.com/7Mcking/JustObjectDetection.git```
 
 ```mkdir build && cd build```
 
