@@ -60,3 +60,7 @@ Makefile*
 *.swp
 *.bak
 *~
+*.DS_Store
+
+# Yolo  weights
+*.weights

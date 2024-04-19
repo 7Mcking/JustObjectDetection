@@ -2,7 +2,7 @@
 // Created by Naren Sadhwani on 18.04.24.
 //
 
-#include "MainWindow.h"
+#include "../Headers/MainWindow.h"
 #include <QApplication>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -13,7 +13,7 @@
 #include <QStandardItem>
 #include <QSize>
 #include <opencv2/videoio.hpp>
-#include "utilities.h"
+#include "../Headers/utilities.h"
 
 
 

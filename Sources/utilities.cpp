@@ -8,7 +8,7 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QDebug>
-#include "utilities.h"
+#include "../Headers/utilities.h"
 
 QString utilities::getDataPath() {
     auto userPicturesPath =  QStandardPaths::standardLocations(QStandardPaths::PicturesLocation)[0];

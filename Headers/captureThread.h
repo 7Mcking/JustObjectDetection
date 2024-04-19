@@ -45,6 +45,11 @@ private:
     int frameWidth, frameHeight;
     bool takingPhoto;
 
+    //DNN Object Detection
+    cv::dnn::Net net;
+    void detectObjectsDNN(cv::Mat &frame);
+    vector<string> objectClasses;
+
     //Object Detection
     cv::CascadeClassifier *classifier;
     void detectObjects(cv::Mat &frame);

@@ -19,12 +19,12 @@ message(STATUS "OpenCV is at location: ${OpenCV_DIR}")
 
 
 add_executable(JustObjectDetection main.cpp
-        MainWindow.h
-        MainWindow.cpp
-        utilities.h
-        utilities.cpp
-        captureThread.h
-        captureThread.cpp)
+        Headers/MainWindow.h
+        Sources/MainWindow.cpp
+        Headers/utilities.h
+        Sources/utilities.cpp
+        Headers/captureThread.h
+        Sources/captureThread.cpp)
 target_link_libraries(JustObjectDetection
         Qt5::Core
         Qt5::Gui
