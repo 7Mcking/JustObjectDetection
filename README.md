@@ -1,5 +1,5 @@
 # JustObjectDetection
-Object detection Gui using cascade classifier and DNN
+Object detection Gui using Yolo
 
 ## Running the project
 ```git clone https://github.com/7Mcking/JustObjectDetection.git```
