@@ -30,7 +30,13 @@ target_link_libraries(JustObjectDetection
         Qt5::Gui
         Qt5::Widgets
         Qt5::Multimedia
-        ${OpenCV_LIBS}
+        opencv_core
+        opencv_imgproc
+        opencv_imgcodecs
+        opencv_video
+        opencv_videoio
+        opencv_objdetect
+        opencv_dnn
 )
 
 

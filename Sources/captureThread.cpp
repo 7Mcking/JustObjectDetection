@@ -140,17 +140,20 @@ void captureThread::detectObjectsDNN(cv::Mat &frame) {
 
     decodeOutputLayers(frame, outs, outputClassIds, outputConfidences, outputBoundingBoxes);
 
-    for (auto i=0; i<outputClassIds.size(); i++){
-        cv::rectangle(frame, outputBoundingBoxes[i], cv::Scalar(0, 255, 0), 2);
+    for(size_t i = 0; i < outputClassIds.size(); i ++) {
+        cv::rectangle(frame, outputBoundingBoxes[i], cv::Scalar(0, 0, 255));
+
+        // get the label for the class name and its confidence
         string label = objectClasses[outputClassIds[i]];
-        label += ": " + to_string(outputConfidences[i]);
+        label += cv::format(":%.2f", outputConfidences[i]);
+
+        // display the label at the top of the bounding box
         int baseLine;
         cv::Size labelSize = cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
-        cv::putText(frame, label, cv::Point(outputBoundingBoxes[i].x, outputBoundingBoxes[i].y),
-                    cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+        int left = outputBoundingBoxes[i].x, top = outputBoundingBoxes[i].y;
+        top = max(top, labelSize.height);
+        cv::putText(frame, label, cv::Point(left, top), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255,255,255));
     }
-
-
 }
 
 
@@ -176,22 +179,23 @@ void decodeOutputLayers(cv::Mat &frame, const vector<cv::Mat> &outs,
     vector<cv::Rect> boxes;
 
     for (const auto & out : outs){
-        auto *data = (float *)out.data;
-        for (auto j=0; j<out.rows; j++){
+        auto *data = (float *) out.data;
+        for (int j = 0; j < out.rows; j++, data += out.cols){
             cv::Mat scores = out.row(j).colRange(5, out.cols);
             cv::Point classIdPoint;
             double confidence;
             cv::minMaxLoc(scores, 0, &confidence, 0, &classIdPoint);
             if (confidence > confidenceThreshold){
-                int centerX = (int)(data[j*7] * frame.cols);
-                int centerY = (int)(data[j*7 + 1] * frame.rows);
-                int width = (int)(data[j*7 + 2] * frame.cols);
-                int height = (int)(data[j*7 + 3] * frame.rows);
-                int left = centerX - width/2;
-                int top = centerY - height/2;
+                int centerX = (int)(data[0] * frame.cols);
+                int centerY = (int)(data[1] * frame.rows);
+                int width = (int)(data[2] * frame.cols);
+                int height = (int)(data[3] * frame.rows);
+                int left = centerX - width / 2;
+                int top = centerY - height / 2;
+
+                classIds.push_back(classIdPoint.x);
                 confidences.push_back((float)confidence);
                 boxes.emplace_back(left, top, width, height);
-                classIds.push_back(classIdPoint.x);
             }
         }
     }
