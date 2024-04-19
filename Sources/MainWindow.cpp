@@ -86,9 +86,6 @@ void MainWindow::createActions() {
     connect(cameraInfoAction, SIGNAL(triggered(bool)), this, SLOT(showCameraInfo()));
     connect(openCameraAction, SIGNAL(triggered(bool)), this, SLOT(openCamera()));
     connect(exitAct, SIGNAL(triggered(bool)), QApplication::instance(), SLOT(quit()));
-
-
-
 }
 
 void MainWindow::showCameraInfo() {

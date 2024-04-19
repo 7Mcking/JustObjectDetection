@@ -206,7 +206,4 @@ void decodeOutputLayers(cv::Mat &frame, const vector<cv::Mat> &outs,
         outputConfidences.push_back(confidences[idx]);
     }
 
-
-
-
 }

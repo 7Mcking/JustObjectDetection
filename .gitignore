@@ -61,6 +61,3 @@ Makefile*
 *.bak
 *~
 *.DS_Store
-
-# Yolo  weights
-*.weights
